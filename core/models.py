@@ -105,7 +105,7 @@ class Paciente(models.Model):
 
 
 class Possui(models.Model):
-    paciente = models.OneToOneField(Paciente, models.DO_NOTHING, db_column='paciente', primary_key=True)  # The composite primary key (paciente, convenio) found, that is not supported. The first column is selected.
+    paciente = models.OneToOneField(Paciente, models.DO_NOTHING, db_column='paciente', primary_key=True)
     convenio = models.ForeignKey(Convenio, models.DO_NOTHING, db_column='convenio')
     tipo = models.CharField(max_length=1, blank=True, null=True)
     vencimento = models.DateField(blank=True, null=True)

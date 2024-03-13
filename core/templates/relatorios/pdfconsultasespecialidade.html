@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Pacientes por Convênio
+{% endblock %}
+{% block main %}
+    <table style="border: black solid; padding: 3px">
+        <thead>
+        <tr>
+            <th>Mês</th>
+            <th>Especialidade</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for mes, espec in consultas %}
+            <tr>
+                <td>{{ mes }}</td>
+                <td>{{ espec }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

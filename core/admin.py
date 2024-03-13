@@ -19,3 +19,12 @@ class MedicoConvenioInline(admin.StackedInline):
 class MedicoAdmin(admin.ModelAdmin):
     list_display = ['crm', 'nome', 'telefone', 'salario', 'ambulatorio']
     inlines = [MedicoConvenioInline,]
+
+class PacienteConvenioInline(admin.TabularInline):
+    model = models.Possui
+    extra = 1
+    
+@admin.register(models.Paciente)
+class PacienteAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'telefone', 'cidade', 'ambulatorio')
+    inlines = [PacienteConvenioInline]

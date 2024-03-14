@@ -1,37 +1,36 @@
 {% extends 'base.html' %}
 
-{% block titulo %}Minha Clínica 2024 - Relatório Pacientes {% endblock %}
+{% block titulo %}Minha Clínica 2024 - Relatório Pacientes{% endblock %}
 {% block conteudo %}
-        <article>
-            <h1>Relatório de Pacientes</h1>
-            <table class="striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>Cidade</th>
-                        <th>Idade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for p in pacientes %}
-                    <tr>
-                        <td>{{ p.nome }}</td>
-                        <td>{{ p.telefone }}</td>
-                        <td>{{ p.cidade }}</td>
-                        <td>{{ p.idade }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4">Não existem pacientes cadastrados</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <p>
-                <a href="{% url 'pdf_pacientes' %}" role="button" target="_blank">
-                    Gerar PDF
-                </a>
-            </p>
-        </article>
+
+            <article>
+                <h1>Relatório de Pacientes</h1>
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Idade</th>
+                            <th>Telefone</th>
+                            <th>Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in pacientes %}
+                        <tr>
+                            <td>{{p.nome}}</td>
+                            <td>{{p.idade}}</td>
+                            <td>{{p.telefone}}</td>
+                            <td>{{p.cidade}}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">Não existe clientes cadastrados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                    <article>
+                        <a href="{% url 'pdf_pacientes' %}" role="button" target="_blank">Gerar PFD</a>
+                    </article>
+            </article>
 {% endblock %}

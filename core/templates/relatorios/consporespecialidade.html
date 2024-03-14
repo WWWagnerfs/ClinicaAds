@@ -4,34 +4,31 @@
 {% block conteudo %}
 
         <article>
-            <h1>Relatório de Pacientes Por Convênio</h1>
+            <h1>Relatório de consultas por especialidade e por mês</h1>
             <table class="striped">
                 <thead>
                     <tr>
-                        <th>Convênio</th>
-                        <th>Nome</th>
-                        <th>Idade</th>
+                        <th>Consultas</th>
+                        <th>Especialidade</th>
+                        <th>Mês</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for convenio in ppc %}
-                    {% for paciente in convenio.pacientes %}
+                    {% for consulta in consultas  %}
                     <tr>
-                         <td>{{ convenio.convenio }}</td>
-                         <td>{{ paciente.nome }}</td>
-                         <td>{{ paciente.idade }}</td>
+                        <td>{{ consulta.num_consultas }}</td>
+                        <td>{{ consulta.medico__especialidade }}</td>
+                        <td>{{ consulta.data__month }}</td>
                     </tr>
                     {% empty %}
                     <tr>
                         <td colspan="3">Não existem pacientes cadastrados</td>
                     </tr>
                     {% endfor %}
-                    {% endfor %}
                 </tbody>
             </table>
-
             <p>
-                <a href="{% url 'pdf_pacientes_por_convenio' %}" role="button" target="_blank">
+                <a href="{% url 'rel_cons_por_espec_pdf' %}" role="button" target="_blank">
                     Gerar PDF
                 </a>                
             </p>

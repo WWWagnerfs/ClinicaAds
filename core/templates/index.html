@@ -15,4 +15,19 @@
                 Relatório Pacientes por Convênio
             </a>
         </article>
+        <article>
+            <a href="{% url 'graf_cons_conv' %}" role="button" class="secondary">
+                Gráfico de Consultas por Convênio
+            </a>
+        </article>
+        <article>
+            <a href="{% url 'rel_por_espec' %}" role="button" class="secondary">
+                Consultas por Especialidade e por Mês
+            </a>
+        </article>
+        <article>
+            <a href="{% url 'quant_cons_por_espec' %}" role="button" class="secondary">
+                Quantidade de Pacientes Atendidos por Especialidade e por Mês
+            </a>
+        </article>
 {% endblock %}

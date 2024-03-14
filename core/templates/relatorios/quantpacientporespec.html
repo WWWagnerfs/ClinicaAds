@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Minha Clínica 2024 - Relatório Pacientes{% endblock %}
+{% block conteudo %}
+
+        <article>
+            <h1>Quantidade de Pacientes Atendidos por Especialidade e por Ano</h1>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Quantidade de pacientes</th>
+                        <th>Especialidade</th>
+                        <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paciente in pacientes_atendidos %}
+                    <tr>
+                        <td>{{ paciente.num_pacientes }}</td>
+                        <td>{{ paciente.medico__especialidade }}</td>
+                        <td>{{ paciente.ano }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3">Não existem pacientes atendidos cadastrados</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <p>
+                <a href="{% url 'quant_cons_por_espec_pdf' %}" role="button" target="_blank">
+                    Gerar PDF
+                </a>                
+            </p>
+        </article>
+{% endblock %}

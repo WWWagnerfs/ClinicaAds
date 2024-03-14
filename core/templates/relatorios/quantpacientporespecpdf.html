@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de consultas por Especialidade e por Mês</title>
+    <style>
+        h1{
+            text-align:center;
+            font-size: 2rem;
+            color: darkgreen;
+        }
+        tr, td, th{
+            border: 1px solid black;
+            border-colapse: colapse;
+            padding: 0.5em;
+        }
+
+        th{
+            text-align: left;
+			background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <article>
+            <h1>Quantidade de Pacientes Atendidos por Especialidade e por Ano</h1>
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Número de Pacientes</th>
+                        <th>Especialidade</th>
+                        <th>Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paciente in pacientes_atendidos %}
+                    <tr>
+                        <td>{{ paciente.num_pacientes }}</td>
+                        <td>{{ paciente.medico__especialidade }}</td>
+                        <td>{{ paciente.ano }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3">Não existem pacientes atendidos cadastrados</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </article>
+    </main>
+</body>
+</html>

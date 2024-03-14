@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Relatório Pacientes</title>
+    <title>Relatório de Pacientes</title>
     <style>
         h1{
             text-align:center;
@@ -14,42 +14,45 @@
             border-colapse: colapse;
             padding: 0.5em;
         }
-
         th{
             text-align: left;
-			background-color: lightgrey;
+            background-color: lightgray;
         }
     </style>
 </head>
+
 <body>
-    <main class="container">
-        <article>
-            <h1>Relatório de Pacientes</h1>
-            <table class="striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>Cidade</th>
-                        <th>Idade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for p in pacientes %}
-                    <tr>
-                        <td>{{ p.nome }}</td>
-                        <td>{{ p.telefone }}</td>
-                        <td>{{ p.cidade }}</td>
-                        <td>{{ p.idade }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4">Não existem pacientes cadastrados</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </article>
-    </main>
+    <body>
+        <main class="container-fluid">
+            <article>
+                <h1>Relatório de Pacientes</h1>
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Idade</th>
+                            <th>Telefone</th>
+                            <th>Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in pacientes %}
+                        <tr>
+                            <td>{{p.nome}}</td>
+                            <td>{{p.idade}}</td>
+                            <td>{{p.telefone}}</td>
+                            <td>{{p.cidade}}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">Não existe clientes cadastrados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                     </table>
+
+                </article>
+        </main>
+    </body>
 </body>
 </html>

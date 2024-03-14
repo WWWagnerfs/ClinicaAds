@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
-    <title>Relatório de Pacientes</title>
-</head>
+{% extends 'base.html' %}
 
-<body>
-    <body>
-        <main class="container-fluid">
+{% block titulo %}Minha Clínica 2024 - Relatório Pacientes{% endblock %}
+{% block conteudo %}
+
             <article>
                 <h1>Relatório de Pacientes</h1>
                 <table class="striped">
@@ -41,7 +33,4 @@
                         <a href="{% url 'pdf_pacientes' %}" role="button" target="_blank">Gerar PFD</a>
                     </article>
             </article>
-        </main>
-    </body>
-</body>
-</html>
+{% endblock %}

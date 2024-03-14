@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
-    <title>Minha Clinica</title>
-</head>
-<body>
-  <main class="container-fluid">
-    <header>
-        <h1>
-            Minha Clinica
-        </h1>
+{% extends 'base.html' %}
+
+{% block titulo %}Minha Clínica 2024 {% endblock %}
+{% block conteudo %}
+        <header>
+            <h1>Minha Clínica</h1>
+        </header>
         <article>
-            <a href="{% url 'relat_pacientes' %}" role="button">Relatório Pacientes</a>
+            <a href="{% url 'relat_pacientes' %}" role="button" class="secondary">
+                Relatório Pacientes
+            </a>
         </article>
-    </header>
-  </main>
-</body>
-</html>
+        <article>
+            <a href="{% url 'pacientes_por_convenio' %}" role="button" class="secondary">
+                Relatório Pacientes por Convênio
+            </a>
+        </article>
+        <article>
+            <a href="{% url 'graf_cons_conv' %}" role="button" class="secondary">
+                Gráfico de Consultas por Convênio
+            </a>
+        </article>
+{% endblock %}
+
+

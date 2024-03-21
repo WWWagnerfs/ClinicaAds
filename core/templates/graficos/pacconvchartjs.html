@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Minha Clínica 2024 {% endblock %}
+{% block conteudo %}
+<header>
+    <h1>Pacientes por Convênio</h1>
+</header>
+<article data-theme="dark">
+  <label for="grafano">Escolha o ano</label>
+  <select id="grafano">
+    <option disabled selected>Selecione...</option>
+    {% for a in anos %}
+    <option value="{% url 'reljson' a.data__year %}">{{ a.data__year }}</option>
+    {% endfor %}
+  </select>
+  <div>
+    <canvas id="grafico" width="540" height="150"></canvas>
+  </div>
+</article>
+{% endblock %}
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    grafano.onchange = function(){
+        let url = this.value;
+        fetch(url, {
+            method: 'get',
+        }).then(function(result){
+            return result.json()
+        }).then(function(data){
+            grafico = Chart.getChart("grafico");
+            if(grafico) grafico.destroy(); // quase perdi os cabelos aqui.
+            var ctx = document.getElementById('grafico').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Consultas Mensais', // data.labels,
+                        data: data.data,
+                        borderWidth: 3,
+                        borderColor: 'yellow',
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(75, 192, 192)',
+                          'rgb(255, 205, 86)',
+                          'rgb(201, 203, 207)',
+                          'rgb(54, 162, 235)'
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    }
+</script>
+{% endblock %}

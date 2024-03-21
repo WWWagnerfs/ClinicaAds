@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Minha Clínica 2024 {% endblock %}
+{% block conteudo %}
+        <header>
+            <h1>Pacientes por Cidade</h1>
+        </header>
+        <article data-theme="dark">
+            <p style="text-align:center">
+                <img src="data:image/png;base64, {{ grafico|safe }}" alt="gráfico" id="img">
+            </p>
+        </article>
+{% endblock %}

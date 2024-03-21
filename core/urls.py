@@ -25,4 +25,11 @@ urlpatterns = [
     
     path('relatorios/quantpacientporespecpdf', views.RelatPacientesAtendidosEspecialidadeMes.as_view(),
          name='quant_cons_por_espec_pdf'),
+    path('graficos/pacconv', views.PacientePorConvenioListView.as_view(), name='graf_pac_conv'),
+
+    path('consjson/<int:ano>', views.RelatorioConsultasAno.as_view(), name='reljson'),
+    path('consmensais/', views.EscolhaMesView.as_view(), name='consmens'),
+    path('graficos/paccidade', views.GrafPacientesCidade.as_view(),
+         name='graf_pac_cid'),
+
 ]
